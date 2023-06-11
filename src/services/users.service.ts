@@ -11,16 +11,16 @@ export class UserService {
     }
 
     public async createUser(userData: CreateUserDto): Promise<User> {
-        const existingUser: User | null = await DB.Users.findOne({
+        const existingUser = await DB.Users.findOne({
             where: { name: userData.name }
         });
 
         if (existingUser) {
-            return existingUser;
+            return existingUser.dataValues;
         }
 
-        const createdUser: User = await DB.Users.create(userData);
+        const createdUser = await DB.Users.create(userData);
 
-        return createdUser;
+        return createdUser.dataValues;
     }
 }
