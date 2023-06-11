@@ -9,6 +9,9 @@ export class MessageModel extends Model<Message, MessageCreationAttributes> impl
     public username: string;
     public title: string;
     public message: string;
+
+    public readonly createdAt!: Date;
+    public readonly updatedAt!: Date;
 }
 
 export default function (sequelize: Sequelize): typeof MessageModel {

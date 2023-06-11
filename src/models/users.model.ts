@@ -6,6 +6,9 @@ export type UserCreationAttributes = Optional<User, 'id'>;
 export class UserModel extends Model<User, UserCreationAttributes> implements User {
     public id: number;
     public name: string;
+
+    public readonly createdAt!: Date;
+    public readonly updatedAt!: Date;
 }
 
 export default function (sequelize: Sequelize): typeof UserModel {
