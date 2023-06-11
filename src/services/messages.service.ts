@@ -14,7 +14,8 @@ export class MessageService {
 
     public async findMessagesByRecipientId(recipientId: number): Promise<Message[]> {
         const messages: Message[] = await DB.Messages.findAll({
-            where: { recipientId }
+            where: { recipientId },
+            order: [['createdAt', 'DESC']]
         });
         return messages;
     }
